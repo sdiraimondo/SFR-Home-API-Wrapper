@@ -1,12 +1,4 @@
-#!flask/bin/python
-from flask import Flask
-from flask import jsonify
-from flask import abort
-from flask import make_response
-from flask import request
-from flask import redirect
-from flask import url_for
-from flask import send_from_directory
+#!python
 import os
 import time
 from urllib import request
@@ -21,7 +13,8 @@ app = Flask(__name__)
 # Login
 USERNAME = %USER%
 PASSWORD = %PASSWORD%
-MySystem = homesfr(USERNAME, PASSWORD, None, False, True)
+MySystem=HomeSFR(USERNAME, PASSWORD, None, False, True)
+MySystem.login()
 
 # Modes utilisables
 MODE_OFF = 0
@@ -39,7 +32,13 @@ PRESENCE_CAMERA_DETECTOR = 'PIR_CAMERA'			# https://boutique.home.sfr.fr/camera
 TEMPHUM_SENSOR = 'TEMP_HUM'				# https://boutique.home.sfr.fr/thermometre
 ONOFF_PLUG = 'ON_OFF_PLUG'				# https://boutique.home.sfr.fr/prise-commandee-connectee-legrand
 
-if MySystem.login()=True:
-    mode = MySystem.get_mode()
-    print ('OK')
-Print ('Error')
+mode = MySystem.get_mode()
+def switch(mode):
+    if mode == 0:
+        return 'OFF'
+    elif mode == 1:
+        return 'CUSTOM'
+    elif mode == 2:
+        return 'ON'
+    else:
+        abort(404)
