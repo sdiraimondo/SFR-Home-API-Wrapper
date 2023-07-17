@@ -18,6 +18,12 @@ from homesfr import *
 
 app = Flask(__name__)
 
+# Login
+username = %USERNAME%
+password= %PASSWORD%
+MySystem=HomeSFR(username, password, None, False, True)
+MySystem.login()
+
 # Modes utilisables
 MODE_OFF = 0
 MODE_CUSTOM = 1
@@ -37,13 +43,6 @@ ONOFF_PLUG = 'ON_OFF_PLUG'				# https://boutique.home.sfr.fr/prise-commandee-con
 @app.route('/api/hello/')
 def hello():
     return "Home by SFR Bridge"
-
-@app.route('/api/login', methods=['GET'])
-def login():
-    username = request.args.get('username')
-    password= request.args.get('password')
-    MySystem=HomeSFR(username, password, None, False, True)
-    MySystem.login()
 
 @app.route('/api/get_alarm_mode/')
 def get_mode():
