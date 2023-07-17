@@ -38,10 +38,10 @@ ONOFF_PLUG = 'ON_OFF_PLUG'				# https://boutique.home.sfr.fr/prise-commandee-con
 def hello():
     return "Home by SFR Bridge"
 
-@app.route('/api/login/')
+@app.route('/api/login', methods=['GET'])
 def login():
-    username = request.form['username']
-    password = request.form['password']
+    username = request.args.get('username')
+    password= request.args.get('password')
     MySystem=HomeSFR(username, password, None, False, True)
     MySystem.login()
 
