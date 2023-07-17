@@ -14,7 +14,7 @@ from http.cookiejar import CookieJar
 from urllib.parse import urlencode
 from urllib.error import HTTPError
 from time import time
-import homesfr
+from homesfr import *
 
 app = Flask(__name__)
 
@@ -52,9 +52,10 @@ def get_mode():
             return 'OFF'
         elif mode == 1:
             return 'CUSTOM'
-        elif mode == ON:
-            else:
-        abort(404)
+        elif mode == 2:
+            return 'ON'
+        else:
+            abort(404)
 
 @app.errorhandler(400)
 def not_complete(error):
