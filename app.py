@@ -7,8 +7,7 @@ from urllib.error import HTTPError
 from time import time
 import homesfr
 
-name = 'homesfr API wrapper'
-version = '0.1'
+app = Flask(__name__)
 
 # Login
 username = %USER%
@@ -29,9 +28,6 @@ KEYPAD_CONTROLER = 'KEYPAD'				# https://boutique.home.sfr.fr/clavier-de-command
 PRESENCE_CAMERA_DETECTOR = 'PIR_CAMERA'			# https://boutique.home.sfr.fr/camera
 TEMPHUM_SENSOR = 'TEMP_HUM'				# https://boutique.home.sfr.fr/thermometre
 ONOFF_PLUG = 'ON_OFF_PLUG'				# https://boutique.home.sfr.fr/prise-commandee-connectee-legrand
-
-
-app = Flask(__name__)
 
 @app.route("/api/hello/")
 def hello():
