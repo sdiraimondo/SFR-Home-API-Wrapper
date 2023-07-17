@@ -9,7 +9,7 @@ from flask import url_for
 from flask import send_from_directory
 import os
 import time
-from urllib import request
+#from urllib import request
 from http.cookiejar import CookieJar
 from urllib.parse import urlencode
 from urllib.error import HTTPError
