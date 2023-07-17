@@ -21,6 +21,8 @@ app = Flask(__name__)
 # Login
 USERNAME = %USER%
 PASSWORD = %PASSWORD%
+MySystem=HomeSFR(USERNAME, PASSWORD, None, False, True)
+MySystem.login()
 
 # Modes utilisables
 MODE_OFF = 0
@@ -42,22 +44,17 @@ ONOFF_PLUG = 'ON_OFF_PLUG'				# https://boutique.home.sfr.fr/prise-commandee-con
 def hello():
     return "Home by SFR Bridge"
 
-@app.route('/api/meteo/')
-def meteo():
-    dictionnaire = {
-        'type': 'Prévision de température',
-        'valeurs': [24, 24, 25, 26, 27, 28],
-        'unite': "degrés Celcius"
-    }
-    return jsonify(dictionnaire)
-
 @app.route('/api/get_alarm_mode/')
 def get_mode():
-    homesfr.__init__ (USERNAME, PASSWORD, None, False, True)
-    if homesfr.login=True:
-        mode = homesfr.get_mode()
-        return mode
-    return (None)  
+    mode = MySystem.get_mode()
+    def switch(mode):
+        if mode == 0:
+            return 'OFF'
+        elif mode == 1:
+            return 'CUSTOM'
+        elif mode == ON:
+            else:
+        abort(404)
 
 @app.errorhandler(400)
 def not_complete(error):
