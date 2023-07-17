@@ -47,14 +47,14 @@ def hello():
 @app.route('/api/get_alarm_mode/')
 def get_mode():
     mode = MySystem.get_mode()
-    def switch(mode):
-        if mode == 0:
-            return 'OFF'
-        elif mode == 1:
-            return 'CUSTOM'
-        elif mode == 2:
-            return 'ON'
-        else:
+    match mode:
+        case 0:
+            return "MODE_OFF"
+        case 1:
+            return "MODE_CUSTOM"
+        case 2:
+            return "MODE_ON"
+        case _:
             abort(404)
 
 @app.errorhandler(400)
