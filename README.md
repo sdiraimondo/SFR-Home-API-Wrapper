@@ -1,13 +1,21 @@
-# What's this?
+# API Wrapper pour SFR Home
+Il s'agit d'une API basé sur Flask et reposant sur une bibliothèque de @Almtesh permettant d'accéder au système Home by SFR (https://github.com/Almtesh/homesfr/)
+Le code de la bibliothèque s'appuie sur les appels fait sur le [site](https://home.sfr.fr) identifiés par rétro-ingénérie.
 
-This is a set of libraries to control your Home by SFR account.
-They all work around the website.
+# Comment l'installer ?
+## Prérequis 
+* Docker-ce
+* Identifiants SFR Home
 
-# What's Home by SFR?
+## Procédure
+* git clone https://github.com/sdiraimondo/SFR-Home-API-Wrapper
+* cd ./SFR-Home-API-Wrapper
+* docker build -t sfr-home-api:latest
+* docker run -d -p 5000:5000 sfr-home-api:latest
 
-Home by SFR is a security and automation service provided by the French Internet provider SFR.
-The library was only tested for the French version because I don't know if it exists elsewhere
+## Fonctionnalités supportées
+* Etat de l'alarme ('/api/get_alarm_mode/')
+* WIP, d'autres fonctionnalités à venir (état des capteurs notamment)
 
 # Licence
-
-These libraries are under GNU GPL v3.
+Voir la [licence](LICENSE) pour plus de détails.
