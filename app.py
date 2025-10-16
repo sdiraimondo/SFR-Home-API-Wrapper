@@ -19,8 +19,8 @@ from homesfr import *
 app = Flask(__name__)
 
 # Login
-username = %USERNAME%
-password= %PASSWORD%
+username = $USERNAME
+password= $PASSWORD
 MySystem=HomeSFR(username, password, None, False, True)
 MySystem.login()
 
